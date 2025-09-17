@@ -40,6 +40,7 @@
       max-width: 1000px;
       margin: 0 auto;
       padding: 1rem;
+      flex-wrap: wrap;
     }
     header a {
       color: var(--text-dark);
@@ -127,16 +128,28 @@
       color: var(--muted);
       font-size: 0.85rem;
       overflow: hidden;
+      flex-direction: column;
     }
     .img-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      border-radius: 6px;
+    }
+    .img-label {
+      margin-top: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      text-align: center;
     }
     @media (max-width: 760px) {
       .img-row {
         flex-direction: column;
+      }
+      header nav {
+        justify-content: center;
       }
     }
   </style>
@@ -201,8 +214,11 @@
           <li>Focused on conversation-based lead generation to connect prospects directly with sales reps.</li>
           <li>Implemented CRM with structured leads and deals pipeline, ensuring lead tracking from capture → qualification → closure.</li>
         </ul>
-        <div class="placeholder card">
-          <img src="assets_images/assets/images/lead-funnel.png" alt="Lead Funnel" style="width: 100%; border-radius: 8px"/>
+        <div class="img-row">
+          <div class="img-thumb">
+            <img src="assets_images/assets/images/lead-funnel.png" alt="Lead Funnel" />
+            <div class="img-label"><b>Lead Funnel</b></div>
+          </div>
         </div>
 
         <h4>Results</h4>
@@ -225,12 +241,15 @@
         <div class="img-row">
           <div class="img-thumb">
             <img src="assets_images/assets/images/meta-ads-results.jpeg" alt="Meta Ads Results" />
+            <div class="img-label"><b>Meta Ads Results 2025</b></div>
           </div>
           <div class="img-thumb">
             <img src="assets_images/assets/images/google-ads-1.jpg" alt="Google Ads 2024" />
+            <div class="img-label"><b>Google Ads Results 2024</b></div>
           </div>
           <div class="img-thumb">
             <img src="assets_images/assets/images/google-ads-2.jpg" alt="Google Ads 2025" />
+            <div class="img-label"><b>Google Ads Results 2025</b></div>
           </div>
         </div>
 
