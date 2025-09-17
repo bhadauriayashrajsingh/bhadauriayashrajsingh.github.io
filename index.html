@@ -42,10 +42,10 @@
       max-width: 1000px;
       margin: 0 auto;
       padding: 1rem;
-      flex-wrap: nowrap;
+      position: relative;
     }
 
-    /* brand link */
+    /* brand link (centered on mobile via flex + absolute button) */
     .brand-link {
       color: var(--text-dark);
       text-decoration: none;
@@ -74,6 +74,7 @@
       border: 0;
       padding: 8px;
       cursor: pointer;
+      z-index: 60;
     }
     #navToggle .bar {
       display: block;
@@ -82,7 +83,17 @@
       margin: 4px 0;
       background: var(--text-dark);
       border-radius: 2px;
-      transition: transform .2s ease, opacity .2s ease;
+      transition: transform .25s ease, opacity .2s ease;
+    }
+    /* open -> X */
+    #navToggle.open .bar:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    #navToggle.open .bar:nth-child(2) {
+      opacity: 0;
+    }
+    #navToggle.open .bar:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
     }
 
     /* container / content */
@@ -152,7 +163,7 @@
 
     @media (max-width: 760px) {
       /* show burger, hide inline nav */
-      #navToggle { display: block; }
+      #navToggle { display: block; position: absolute; left: 16px; top: 14px; }
       .nav-links {
         display: none;
         position: absolute;
@@ -166,14 +177,14 @@
         flex-direction: column;
         gap: 12px;
         align-items: center;
+        z-index: 55;
       }
       .nav-links.open { display: flex; }
-      /* stack header content */
-      header nav { flex-direction: column; align-items: center; gap: 8px; }
+      /* single-line header with centered brand */
+      header nav { justify-content: center; padding: 12px 1rem; }
       .brand-link { font-size: 1.05rem; }
       .img-row { flex-direction: column; }
     }
-
   </style>
 </head>
 <body>
@@ -182,15 +193,15 @@
 
   <header>
     <nav>
-      <!-- name scrolls to top -->
-      <a class="brand-link" href="#top">Yashraj Singh Bhadauria</a>
-
-      <!-- hamburger for mobile -->
+      <!-- hamburger left -->
       <button id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primaryNav">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
       </button>
+
+      <!-- name centered -->
+      <a class="brand-link" href="#top">Yashraj Singh Bhadauria</a>
 
       <!-- nav links -->
       <div id="primaryNav" class="nav-links" role="navigation">
@@ -384,6 +395,8 @@
       navToggle.addEventListener('click', () => {
         const open = primaryNav.classList.toggle('open');
         navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        // toggle visual X state on button
+        navToggle.classList.toggle('open', open);
       });
 
       // close menu when a nav link is clicked (mobile)
@@ -392,6 +405,7 @@
           if (primaryNav.classList.contains('open')) {
             primaryNav.classList.remove('open');
             navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.classList.remove('open');
           }
         });
       });
@@ -401,6 +415,7 @@
         if (primaryNav.classList.contains('open')) {
           primaryNav.classList.remove('open');
           navToggle.setAttribute('aria-expanded', 'false');
+          navToggle.classList.remove('open');
         }
       });
 
