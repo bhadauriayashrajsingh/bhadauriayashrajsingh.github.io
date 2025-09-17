@@ -133,12 +133,14 @@
   }
 
   .floating-whatsapp img {
-    width: 60px;   /* adjust size */
-    height: 60px;  /* adjust size */
-    border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  }
-
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;   /* makes it circular */
+  object-fit: cover;    /* trims extra space */
+  background: #25D366;  /* WhatsApp green background */
+  padding: 8px;         /* adjust spacing inside circle */
+}
+    
   .floating-whatsapp img:hover {
     transform: scale(1.1);
     transition: 0.2s;
