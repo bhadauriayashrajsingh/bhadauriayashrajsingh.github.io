@@ -124,6 +124,24 @@
       header nav{ grid-template-columns:48px 1fr 48px; padding:12px 1rem; }
       .img-row{ flex-direction:column; }
     }
+
+    .floating-whatsapp {
+    position: fixed;
+    bottom: 20px;  /* distance from bottom */
+    right: 20px;   /* distance from right */
+    z-index: 1000;
+  }
+
+  .floating-whatsapp img {
+    width: 60px;   /* adjust size */
+    height: 60px;  /* adjust size */
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .floating-whatsapp img:hover {
+    transform: scale(1.1);
+    transition: 0.2s;
   </style>
 </head>
 <body>
