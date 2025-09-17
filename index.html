@@ -6,204 +6,139 @@
   <title>Yashraj Singh Bhadauria - Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg: #ffffff;
-      --surface: #f8fbff;
-      --text-dark: #0b1220;
-      --text-body: #334155;
-      --muted: #94a3b8;
-      --accent: #2563eb;
-      --accent-dark: #1e40af;
-      --brand-teal: #06b6d4;
-      --card-bg: #f1f7ff;
-      --border: #e6eefc;
+    :root{
+      --bg:#ffffff; --border:#e6eefc; --text-dark:#0b1220; --text-body:#334155; --accent:#2563eb; --card-bg:#f1f7ff;
+    }
+    body{
+      margin:0;
+      font-family:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text-body);
+      line-height:1.6;
     }
 
-    body {
-      margin: 0;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text-body);
-      line-height: 1.6;
+    /* header using grid: hamburger left, brand centered, nav right */
+    header{
+      background:var(--bg);
+      border-bottom:1px solid var(--border);
+      position:sticky; top:0; z-index:50;
     }
-
-    /* header */
-    header {
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 50;
+    header nav{
+      max-width:1000px;
+      margin:0 auto;
+      padding:1rem;
+      display:grid;
+      grid-template-columns:48px 1fr 48px;
+      align-items:center;
+      gap:12px;
+      position:relative;
     }
-    header nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 1rem;
-      position: relative;
-    }
-
-    /* brand link (centered on mobile via flex + absolute button) */
-    .brand-link {
-      color: var(--text-dark);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
-      line-height: 1;
-    }
-
-    /* nav links container */
-    .nav-links {
-      display: flex;
-      gap: 0.75rem;
-      align-items: center;
-    }
-    .nav-links a {
-      color: var(--text-dark);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .nav-links a:hover { color: var(--accent-dark); }
 
     /* hamburger */
-    #navToggle {
-      display: none;
-      background: transparent;
-      border: 0;
-      padding: 8px;
-      cursor: pointer;
-      z-index: 60;
+    #navToggle{
+      display:none;
+      background:transparent;
+      border:0;
+      padding:8px;
+      cursor:pointer;
+      justify-self:start;
+      z-index:60;
     }
-    #navToggle .bar {
-      display: block;
-      width: 22px;
-      height: 2px;
-      margin: 4px 0;
-      background: var(--text-dark);
-      border-radius: 2px;
-      transition: transform .25s ease, opacity .2s ease;
+    #navToggle .bar{
+      display:block;
+      width:22px;
+      height:2px;
+      margin:4px 0;
+      background:var(--text-dark);
+      border-radius:2px;
+      transition:transform .25s ease, opacity .2s ease;
     }
-    /* open -> X */
-    #navToggle.open .bar:nth-child(1) {
-      transform: translateY(6px) rotate(45deg);
-    }
-    #navToggle.open .bar:nth-child(2) {
-      opacity: 0;
-    }
-    #navToggle.open .bar:nth-child(3) {
-      transform: translateY(-6px) rotate(-45deg);
+    /* X state */
+    #navToggle.open .bar:nth-child(1){ transform: translateY(6px) rotate(45deg); }
+    #navToggle.open .bar:nth-child(2){ opacity:0; }
+    #navToggle.open .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+
+    /* brand centered */
+    .brand-link{
+      color:var(--text-dark);
+      text-decoration:none;
+      font-weight:700;
+      font-size:1rem;
+      justify-self:center;
+      display:inline-block;
+      line-height:1;
     }
 
-    /* container / content */
-    .container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    /* nav links (desktop: right) */
+    .nav-links{
+      display:flex;
+      gap:0.75rem;
+      align-items:center;
+      justify-self:end;
     }
-    h1, h2, h3 { color: var(--text-dark); margin-top: 0; }
-    h1 { font-size: 2rem; font-weight: 700; }
-    h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; }
-    h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; }
+    .nav-links a{ color:var(--text-dark); text-decoration:none; font-weight:600; }
+    .nav-links a:hover{ color:var(--accent); }
 
-    .card {
-      background: var(--card-bg);
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 1px 2px rgba(11,18,32,0.04);
-      border: 1px solid var(--border);
-    }
-    a { color: var(--accent); }
-    footer { text-align: center; padding: 2rem 1rem; border-top: 1px solid var(--border); color: var(--text-body); }
+    /* layout */
+    .container{ max-width:1000px; margin:2rem auto; padding:0 1rem; }
+    h1,h2,h3{ color:var(--text-dark); margin-top:0; }
+    h1{ font-size:2rem; font-weight:700; }
+    h2{ font-size:1.5rem; font-weight:700; margin-top:2rem; }
+    h3{ font-size:1.25rem; font-weight:600; margin-top:1.5rem; }
+    .card{ background:var(--card-bg); padding:1.5rem; border-radius:.75rem; margin-bottom:2rem; box-shadow:0 1px 2px rgba(11,18,32,0.04); border:1px solid var(--border); }
+    a{ color:var(--accent); }
+    footer{ text-align:center; padding:2rem 1rem; border-top:1px solid var(--border); color:var(--text-body); }
 
-    .img-row { display: flex; gap: 1rem; margin-top: 1rem; }
-    .img-thumb {
-      flex: 1;
-      background: #e9f7f9;
-      border-radius: 0.5rem;
-      aspect-ratio: 16/9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      flex-direction: column;
-    }
-    .img-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      border-radius: 6px;
-      cursor: zoom-in;
-    }
-    .img-label {
-      margin-top: 6px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--text-dark);
-      text-align: center;
-    }
+    .img-row{ display:flex; gap:1rem; margin-top:1rem; }
+    .img-thumb{ flex:1; background:#e9f7f9; border-radius:.5rem; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; overflow:hidden; flex-direction:column; }
+    .img-thumb img{ width:100%; height:100%; object-fit:cover; display:block; border-radius:6px; cursor:zoom-in; }
+    .img-label{ margin-top:6px; font-weight:500; font-size:0.9rem; color:var(--text-dark); text-align:center; } /* reduced weight */
 
-    /* Lightbox */
-    #lightboxOverlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(11,18,32,0.75);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 20px;
-    }
-    #lightboxOverlay.active { display: flex; }
-    #lightboxOverlay img { max-width: 95%; max-height: 95%; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-    #lightboxClose { position: fixed; top: 16px; right: 20px; background: rgba(255,255,255,0.9); border: none; border-radius: 6px; padding: 6px 10px; font-weight: 700; cursor: pointer; z-index: 10000; }
+    /* lightbox */
+    #lightboxOverlay{ position:fixed; inset:0; background:rgba(11,18,32,0.75); display:none; align-items:center; justify-content:center; z-index:9999; padding:20px; }
+    #lightboxOverlay.active{ display:flex; }
+    #lightboxOverlay img{ max-width:95%; max-height:95%; border-radius:8px; box-shadow:0 10px 40px rgba(0,0,0,0.5); }
+    #lightboxClose{ position:fixed; top:16px; right:20px; background:rgba(255,255,255,0.9); border:none; border-radius:6px; padding:6px 10px; font-weight:700; cursor:pointer; z-index:10000; }
 
-    @media (max-width: 760px) {
-      /* show burger, hide inline nav */
-      #navToggle { display: block; position: absolute; left: 16px; top: 14px; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 64px;
-        left: 0;
-        right: 0;
-        background: var(--bg);
-        border-top: 1px solid var(--border);
-        box-shadow: 0 6px 24px rgba(11,18,32,0.06);
-        padding: 12px 16px;
-        flex-direction: column;
-        gap: 12px;
-        align-items: center;
-        z-index: 55;
+    /* mobile tweaks */
+    @media (max-width:760px){
+      #navToggle{ display:block; }
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:64px;
+        left:0;
+        right:0;
+        background:var(--bg);
+        border-top:1px solid var(--border);
+        box-shadow:0 6px 24px rgba(11,18,32,0.06);
+        padding:12px 16px;
+        flex-direction:column;
+        gap:12px;
+        align-items:center;
+        z-index:55;
+        justify-self:stretch;
       }
-      .nav-links.open { display: flex; }
-      /* single-line header with centered brand */
-      header nav { justify-content: center; padding: 12px 1rem; }
-      .brand-link { font-size: 1.05rem; }
-      .img-row { flex-direction: column; }
+      .nav-links.open{ display:flex; }
+      /* ensure single-line header: grid already handles alignment; keep brand centered */
+      header nav{ grid-template-columns:48px 1fr 48px; padding:12px 1rem; }
+      .img-row{ flex-direction:column; }
     }
   </style>
 </head>
 <body>
-  <!-- anchor target for top -->
   <a id="top"></a>
 
   <header>
     <nav>
-      <!-- hamburger left -->
       <button id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primaryNav">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
       </button>
 
-      <!-- name centered -->
       <a class="brand-link" href="#top">Yashraj Singh Bhadauria</a>
 
-      <!-- nav links -->
       <div id="primaryNav" class="nav-links" role="navigation">
         <a href="#intro">Intro</a>
         <a href="#kisan">Kisan Sewa Kendra</a>
@@ -282,15 +217,15 @@
         <div class="img-row">
           <div class="img-thumb">
             <img src="assets_images/assets/images/meta-ads-results.jpeg" alt="Meta Ads Results" />
-            <div class="img-label"><b>Meta Ads Results 2025</b></div>
+            <div class="img-label">Meta Ads Results 2025</div>
           </div>
           <div class="img-thumb">
             <img src="assets_images/assets/images/google-ads-1.jpg" alt="Google Ads 2024" />
-            <div class="img-label"><b>Google Ads Results 2024</b></div>
+            <div class="img-label">Google Ads Results 2024</div>
           </div>
           <div class="img-thumb">
             <img src="assets_images/assets/images/google-ads-2.jpg" alt="Google Ads 2025" />
-            <div class="img-label"><b>Google Ads Results 2025</b></div>
+            <div class="img-label">Google Ads Results 2025</div>
           </div>
         </div>
 
@@ -342,8 +277,8 @@
           <li>Proposed visual identity rooted in earthy tones, elegant minimalism, and craft-focused imagery.</li>
           <li>Structured content flow to reflect the brand’s Vision & Mission.</li>
         </ul>
-        <img src="assets_images/assets/images/sutrakari.jpeg" alt="Sutrakari Hero" style="width: 100%; border-radius: 8px; cursor: zoom-in" />
-        <div style="margin-top: 12px" class="img-row">
+        <img src="assets_images/assets/images/sutrakari.jpeg" alt="Sutrakari Hero" style="width:100%; border-radius:8px; cursor:zoom-in" />
+        <div style="margin-top:12px" class="img-row">
           <div class="img-thumb">
             <img src="assets_images/assets/images/sutrakari-1.jpeg" alt="Moodboard 1" />
           </div>
@@ -356,9 +291,7 @@
         <ul>
           <li>The final Shopify store communicates Sutrakari’s artisan-first identity effectively.</li>
           <li>The Our Story section showcases the brand’s mission of empowering weavers, resonating with socially conscious buyers.</li>
-          <li>
-            Store design established Sutrakari as a premium, heritage-driven label, positioning it strongly in the niche of luxury handloom fashion.
-          </li>
+          <li>Store design established Sutrakari as a premium, heritage-driven label.</li>
         </ul>
       </div>
     </section>
@@ -371,7 +304,7 @@
       </p>
       <p>
         <img src="assets_images/assets/images/linkedin.png" alt="LinkedIn Icon" style="width:20px; vertical-align:middle; margin-right:6px;" data-no-lightbox />
-        <a href="https://www.linkedin.com/in/yashraj-singh-bhadoriya/" target="_blank">LinkedIn Profile</a>
+        <a href="https://www.linkedin.com/in/yashraj-singh-bhadoriya/" target="_blank">LinkedIn</a>
       </p>
     </section>
   </div>
@@ -380,7 +313,7 @@
     <p>© 2025 Yashraj Singh Bhadauria. All rights reserved.</p>
   </footer>
 
-  <!-- Lightbox overlay -->
+  <!-- Lightbox -->
   <div id="lightboxOverlay" aria-hidden="true">
     <button id="lightboxClose" aria-label="Close image">✕</button>
     <img id="lightboxImage" src="" alt="Expanded view" />
@@ -388,69 +321,57 @@
 
   <script>
     (function(){
-      /* NAV TOGGLE */
       const navToggle = document.getElementById('navToggle');
       const primaryNav = document.getElementById('primaryNav');
 
       navToggle.addEventListener('click', () => {
         const open = primaryNav.classList.toggle('open');
         navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        // toggle visual X state on button
         navToggle.classList.toggle('open', open);
       });
 
-      // close menu when a nav link is clicked (mobile)
       Array.from(primaryNav.querySelectorAll('a')).forEach(a => {
         a.addEventListener('click', () => {
           if (primaryNav.classList.contains('open')) {
             primaryNav.classList.remove('open');
-            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-expanded','false');
             navToggle.classList.remove('open');
           }
         });
       });
 
-      // clicking brand scrolls to top (native anchor). also close menu if open
       document.querySelector('.brand-link').addEventListener('click', () => {
         if (primaryNav.classList.contains('open')) {
           primaryNav.classList.remove('open');
-          navToggle.setAttribute('aria-expanded', 'false');
+          navToggle.setAttribute('aria-expanded','false');
           navToggle.classList.remove('open');
         }
       });
 
-      /* LIGHTBOX */
+      /* Lightbox */
       const overlay = document.getElementById('lightboxOverlay');
       const imgEl = document.getElementById('lightboxImage');
       const closeBtn = document.getElementById('lightboxClose');
 
-      function openLightbox(src, alt) {
-        imgEl.src = src;
-        imgEl.alt = alt || 'Image';
-        overlay.classList.add('active');
-        overlay.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
+      function openLightbox(src, alt){
+        imgEl.src = src; imgEl.alt = alt || 'Image';
+        overlay.classList.add('active'); overlay.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
       }
-      function closeLightbox() {
-        overlay.classList.remove('active');
-        overlay.setAttribute('aria-hidden', 'true');
-        imgEl.src = '';
-        document.body.style.overflow = '';
+      function closeLightbox(){
+        overlay.classList.remove('active'); overlay.setAttribute('aria-hidden','true');
+        imgEl.src=''; document.body.style.overflow='';
       }
 
-      const images = Array.from(document.querySelectorAll('img')).filter(i => !i.hasAttribute('data-no-lightbox'));
-      images.forEach(img => {
-        img.style.cursor = 'zoom-in';
-        img.addEventListener('click', (e) => {
-          openLightbox(img.src, img.alt);
-        });
+      const images = Array.from(document.querySelectorAll('img')).filter(i=>!i.hasAttribute('data-no-lightbox'));
+      images.forEach(img=>{
+        img.style.cursor='zoom-in';
+        img.addEventListener('click', ()=>openLightbox(img.src, img.alt));
       });
 
       closeBtn.addEventListener('click', closeLightbox);
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay || e.target === imgEl) closeLightbox();
-      });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+      overlay.addEventListener('click', e=>{ if(e.target===overlay||e.target===imgEl) closeLightbox(); });
+      document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLightbox(); });
     })();
   </script>
 </body>
