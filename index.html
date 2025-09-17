@@ -118,6 +118,7 @@
       object-fit: cover;
       display: block;
       border-radius: 6px;
+      cursor: zoom-in;
     }
     .img-label {
       margin-top: 6px;
@@ -126,6 +127,38 @@
       color: var(--text-dark);
       text-align: center;
     }
+
+    /* Lightbox */
+    #lightboxOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11,18,32,0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+    #lightboxOverlay.active { display: flex; }
+    #lightboxOverlay img {
+      max-width: 95%;
+      max-height: 95%;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+    #lightboxClose {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      background: rgba(255,255,255,0.9);
+      border: none;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-weight: 700;
+      cursor: pointer;
+      z-index: 10000;
+    }
+
     @media (max-width: 760px) {
       header nav {
         flex-direction: column;
@@ -205,12 +238,12 @@
 
         <h4>Results</h4>
         <ul>
-          <li>Total Leads Generated: 12,000+</li>
-          <li>Cost per Lead (CPL): ₹4.61 – ₹32.03</li>
-          <li>Reach: 2.1M+ prospects</li>
-          <li>Impressions: 6.9M+</li>
-          <li>MQL Conversion Rate: 20–25% during peak season</li>
-          <li>Closed Revenue Impact: ₹45+ Lakhs attributed to lead-driven deals</li>
+          <li><strong>Total Leads Generated:</strong> 12,000+</li>
+          <li><strong>Cost per Lead (CPL):</strong> ₹4.61 – ₹32.03</li>
+          <li><strong>Reach:</strong> 2.1M+ prospects</li>
+          <li><strong>Impressions:</strong> 6.9M+</li>
+          <li><strong>MQL Conversion Rate:</strong> 20–25% during peak season</li>
+          <li><strong>Closed Revenue Impact:</strong> ₹45+ Lakhs attributed to lead-driven deals</li>
         </ul>
 
         <h3>Part 2: B2C E-Commerce Growth</h3>
@@ -237,25 +270,25 @@
 
         <h4>Results</h4>
         <ul>
-          <li>Google Ads (YoY Jun–Sep 2024 vs 2025):</li>
+          <li><strong>Google Ads (YoY Jun–Sep 2024 vs 2025):</strong></li>
           <ul>
-            <li>Clicks: 25.1K → 60.6K (+141%)</li>
-            <li>Ad Spend: ₹48.3K → ₹66.8K (+38%)</li>
-            <li>Sales Value: ₹6.78L → ₹30L (+342%)</li>
-            <li>ROAS: 14.06 → 45.23 (3.2x higher efficiency)</li>
+            <li><strong>Clicks:</strong> 25.1K → 60.6K (+141%)</li>
+            <li><strong>Ad Spend:</strong> ₹48.3K → ₹66.8K (+38%)</li>
+            <li><strong>Sales Value:</strong> ₹6.78L → ₹30L (+342%)</li>
+            <li><strong>ROAS:</strong> 14.06 → 45.23 (3.2x higher efficiency)</li>
           </ul>
-          <li>Meta Ads (Jun–Sep 2025):</li>
+          <li><strong>Meta Ads (Jun–Sep 2025):</strong></li>
           <ul>
-            <li>Reach: 6.6M+</li>
-            <li>Impressions: 19.2M+</li>
-            <li>Revenue Attributed: ₹2.6Cr+</li>
-            <li>Average ROAS: 4.46 across 39 campaigns</li>
+            <li><strong>Reach:</strong> 6.6M+</li>
+            <li><strong>Impressions:</strong> 19.2M+</li>
+            <li><strong>Revenue Attributed:</strong> ₹2.6Cr+</li>
+            <li><strong>Average ROAS:</strong> 4.46 across 39 campaigns</li>
           </ul>
-          <li>Shopify Store (YoY Jun–Sep 2024 vs 2025):</li>
+          <li><strong>Shopify Store (YoY Jun–Sep 2024 vs 2025):</strong></li>
           <ul>
-            <li>Sessions: 83,353 → 4,19,487 (+275%)</li>
-            <li>Gross Sales: ₹15.9L → ₹5.73Cr (+344%)</li>
-            <li>Orders: 1,091 → 2,289 (+148%)</li>
+            <li><strong>Sessions:</strong> 83,353 → 4,19,487 (+275%)</li>
+            <li><strong>Gross Sales:</strong> ₹15.9L → ₹5.73Cr (+344%)</li>
+            <li><strong>Orders:</strong> 1,091 → 2,289 (+148%)</li>
           </ul>
         </ul>
       </div>
@@ -283,7 +316,7 @@
           <li>Proposed visual identity rooted in earthy tones, elegant minimalism, and craft-focused imagery.</li>
           <li>Structured content flow to reflect the brand’s Vision & Mission.</li>
         </ul>
-        <img src="assets_images/assets/images/sutrakari.jpeg" alt="Sutrakari Hero" style="width: 100%; border-radius: 8px" />
+        <img src="assets_images/assets/images/sutrakari.jpeg" alt="Sutrakari Hero" style="width: 100%; border-radius: 8px; cursor: zoom-in" />
         <div style="margin-top: 12px" class="img-row">
           <div class="img-thumb">
             <img src="assets_images/assets/images/sutrakari-1.jpeg" alt="Moodboard 1" />
@@ -307,13 +340,13 @@
     <section id="contact">
       <h2>Contact</h2>
       <p>
-        <img src="assets_images/assets/images/gmail.png" alt="Gmail Icon" style="width:20px; vertical-align:middle; margin-right:6px;" />
+        <img src="assets_images/assets/images/gmail.png" alt="Gmail Icon" style="width:20px; vertical-align:middle; margin-right:6px;" data-no-lightbox />
         <a href="mailto:bhadoriyayashrajsingh@gmail.com?subject=Inquiry%20about%20your%20services">
           bhadoriyayashrajsingh@gmail.com
         </a>
       </p>
       <p>
-        <img src="assets_images/assets/images/linkedin.png" alt="LinkedIn Icon" style="width:20px; vertical-align:middle; margin-right:6px;" />
+        <img src="assets_images/assets/images/linkedin.png" alt="LinkedIn Icon" style="width:20px; vertical-align:middle; margin-right:6px;" data-no-lightbox />
         <a href="https://www.linkedin.com/in/yashraj-singh-bhadoriya/" target="_blank">
           LinkedIn Profile
         </a>
@@ -324,5 +357,53 @@
   <footer>
     <p>© 2025 Yashraj Singh Bhadauria. All rights reserved.</p>
   </footer>
+
+  <!-- Lightbox overlay -->
+  <div id="lightboxOverlay" aria-hidden="true">
+    <button id="lightboxClose" aria-label="Close image">✕</button>
+    <img id="lightboxImage" src="" alt="Expanded view" />
+  </div>
+
+  <script>
+    (function(){
+      const overlay = document.getElementById('lightboxOverlay');
+      const imgEl = document.getElementById('lightboxImage');
+      const closeBtn = document.getElementById('lightboxClose');
+
+      function openLightbox(src, alt) {
+        imgEl.src = src;
+        imgEl.alt = alt || 'Image';
+        overlay.classList.add('active');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox() {
+        overlay.classList.remove('active');
+        overlay.setAttribute('aria-hidden', 'true');
+        imgEl.src = '';
+        document.body.style.overflow = '';
+      }
+
+      // Attach to images except those with data-no-lightbox
+      const images = Array.from(document.querySelectorAll('img')).filter(i => !i.hasAttribute('data-no-lightbox'));
+      images.forEach(img => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', (e) => {
+          openLightbox(img.src, img.alt);
+        });
+      });
+
+      // Close handlers
+      closeBtn.addEventListener('click', closeLightbox);
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || e.target === imgEl) {
+          closeLightbox();
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    })();
+  </script>
 </body>
 </html>
