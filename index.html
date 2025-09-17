@@ -26,6 +26,8 @@
       color: var(--text-body);
       line-height: 1.6;
     }
+
+    /* header */
     header {
       background: var(--bg);
       border-bottom: 1px solid var(--border);
@@ -40,45 +42,60 @@
       max-width: 1000px;
       margin: 0 auto;
       padding: 1rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
-    header nav div {
+
+    /* brand link */
+    .brand-link {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    /* nav links container */
+    .nav-links {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
       gap: 0.75rem;
+      align-items: center;
     }
-    header a {
+    .nav-links a {
       color: var(--text-dark);
       text-decoration: none;
       font-weight: 600;
     }
-    header a:hover {
-      color: var(--accent-dark);
+    .nav-links a:hover { color: var(--accent-dark); }
+
+    /* hamburger */
+    #navToggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      padding: 8px;
+      cursor: pointer;
     }
+    #navToggle .bar {
+      display: block;
+      width: 22px;
+      height: 2px;
+      margin: 4px 0;
+      background: var(--text-dark);
+      border-radius: 2px;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+
+    /* container / content */
     .container {
       max-width: 1000px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
-    h1, h2, h3 {
-      color: var(--text-dark);
-      margin-top: 0;
-    }
-    h1 {
-      font-size: 2rem;
-      font-weight: 700;
-    }
-    h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-top: 2rem;
-    }
-    h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-top: 1.5rem;
-    }
+    h1, h2, h3 { color: var(--text-dark); margin-top: 0; }
+    h1 { font-size: 2rem; font-weight: 700; }
+    h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; }
+    h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; }
+
     .card {
       background: var(--card-bg);
       padding: 1.5rem;
@@ -87,20 +104,10 @@
       box-shadow: 0 1px 2px rgba(11,18,32,0.04);
       border: 1px solid var(--border);
     }
-    a {
-      color: var(--accent);
-    }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      border-top: 1px solid var(--border);
-      color: var(--text-body);
-    }
-    .img-row {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
+    a { color: var(--accent); }
+    footer { text-align: center; padding: 2rem 1rem; border-top: 1px solid var(--border); color: var(--text-body); }
+
+    .img-row { display: flex; gap: 1rem; margin-top: 1rem; }
     .img-thumb {
       flex: 1;
       background: #e9f7f9;
@@ -140,46 +147,53 @@
       padding: 20px;
     }
     #lightboxOverlay.active { display: flex; }
-    #lightboxOverlay img {
-      max-width: 95%;
-      max-height: 95%;
-      border-radius: 8px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    }
-    #lightboxClose {
-      position: fixed;
-      top: 16px;
-      right: 20px;
-      background: rgba(255,255,255,0.9);
-      border: none;
-      border-radius: 6px;
-      padding: 6px 10px;
-      font-weight: 700;
-      cursor: pointer;
-      z-index: 10000;
-    }
+    #lightboxOverlay img { max-width: 95%; max-height: 95%; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    #lightboxClose { position: fixed; top: 16px; right: 20px; background: rgba(255,255,255,0.9); border: none; border-radius: 6px; padding: 6px 10px; font-weight: 700; cursor: pointer; z-index: 10000; }
 
     @media (max-width: 760px) {
-      header nav {
+      /* show burger, hide inline nav */
+      #navToggle { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-top: 1px solid var(--border);
+        box-shadow: 0 6px 24px rgba(11,18,32,0.06);
+        padding: 12px 16px;
         flex-direction: column;
+        gap: 12px;
         align-items: center;
-        text-align: center;
       }
-      header nav div {
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-      .img-row {
-        flex-direction: column;
-      }
+      .nav-links.open { display: flex; }
+      /* stack header content */
+      header nav { flex-direction: column; align-items: center; gap: 8px; }
+      .brand-link { font-size: 1.05rem; }
+      .img-row { flex-direction: column; }
     }
+
   </style>
 </head>
 <body>
+  <!-- anchor target for top -->
+  <a id="top"></a>
+
   <header>
     <nav>
-      <div><strong>Yashraj Singh Bhadauria</strong></div>
-      <div>
+      <!-- name scrolls to top -->
+      <a class="brand-link" href="#top">Yashraj Singh Bhadauria</a>
+
+      <!-- hamburger for mobile -->
+      <button id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primaryNav">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- nav links -->
+      <div id="primaryNav" class="nav-links" role="navigation">
         <a href="#intro">Intro</a>
         <a href="#kisan">Kisan Sewa Kendra</a>
         <a href="#sutrakari">Sutrakari</a>
@@ -253,6 +267,7 @@
           <li>Used audience segmentation by crop and product category, A/B tested ad creatives, and optimised landing pages.</li>
           <li>Linked Google Ads + Meta Ads data with Shopify for full-funnel visibility.</li>
         </ul>
+
         <div class="img-row">
           <div class="img-thumb">
             <img src="assets_images/assets/images/meta-ads-results.jpeg" alt="Meta Ads Results" />
@@ -341,15 +356,11 @@
       <h2>Contact</h2>
       <p>
         <img src="assets_images/assets/images/gmail.png" alt="Gmail Icon" style="width:20px; vertical-align:middle; margin-right:6px;" data-no-lightbox />
-        <a href="mailto:bhadoriyayashrajsingh@gmail.com?subject=Inquiry%20about%20your%20services">
-          bhadoriyayashrajsingh@gmail.com
-        </a>
+        <a href="mailto:bhadoriyayashrajsingh@gmail.com?subject=Inquiry%20about%20your%20services">bhadoriyayashrajsingh@gmail.com</a>
       </p>
       <p>
         <img src="assets_images/assets/images/linkedin.png" alt="LinkedIn Icon" style="width:20px; vertical-align:middle; margin-right:6px;" data-no-lightbox />
-        <a href="https://www.linkedin.com/in/yashraj-singh-bhadoriya/" target="_blank">
-          LinkedIn Profile
-        </a>
+        <a href="https://www.linkedin.com/in/yashraj-singh-bhadoriya/" target="_blank">LinkedIn Profile</a>
       </p>
     </section>
   </div>
@@ -366,6 +377,34 @@
 
   <script>
     (function(){
+      /* NAV TOGGLE */
+      const navToggle = document.getElementById('navToggle');
+      const primaryNav = document.getElementById('primaryNav');
+
+      navToggle.addEventListener('click', () => {
+        const open = primaryNav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      // close menu when a nav link is clicked (mobile)
+      Array.from(primaryNav.querySelectorAll('a')).forEach(a => {
+        a.addEventListener('click', () => {
+          if (primaryNav.classList.contains('open')) {
+            primaryNav.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+
+      // clicking brand scrolls to top (native anchor). also close menu if open
+      document.querySelector('.brand-link').addEventListener('click', () => {
+        if (primaryNav.classList.contains('open')) {
+          primaryNav.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      /* LIGHTBOX */
       const overlay = document.getElementById('lightboxOverlay');
       const imgEl = document.getElementById('lightboxImage');
       const closeBtn = document.getElementById('lightboxClose');
@@ -384,7 +423,6 @@
         document.body.style.overflow = '';
       }
 
-      // Attach to images except those with data-no-lightbox
       const images = Array.from(document.querySelectorAll('img')).filter(i => !i.hasAttribute('data-no-lightbox'));
       images.forEach(img => {
         img.style.cursor = 'zoom-in';
@@ -393,16 +431,11 @@
         });
       });
 
-      // Close handlers
       closeBtn.addEventListener('click', closeLightbox);
       overlay.addEventListener('click', (e) => {
-        if (e.target === overlay || e.target === imgEl) {
-          closeLightbox();
-        }
+        if (e.target === overlay || e.target === imgEl) closeLightbox();
       });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeLightbox();
-      });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
     })();
   </script>
 </body>
