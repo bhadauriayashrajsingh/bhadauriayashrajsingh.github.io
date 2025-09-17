@@ -7,12 +7,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
+      /* Brand palette — professional performance-marketer tone */
       --bg: #ffffff;
-      --text-dark: #0f172a;
+      --surface: #f8fbff;
+      --text-dark: #0b1220;
       --text-body: #334155;
-      --accent: #2563eb;
-      --accent-dark: #1e40af;
+      --muted: #94a3b8;
+
+      /* Primary (action) and secondary accents */
+      --accent: #2563eb;       /* deep blue (primary CTA) */
+      --accent-dark: #1e40af;  /* darker for hover */
+      --brand-teal: #06b6d4;   /* secondary accent for highlights */
+      --card-bg: #f1f7ff;      /* subtle card tint */
+      --border: #e6eefc;
     }
+
     body {
       margin: 0;
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -21,8 +30,8 @@
       line-height: 1.6;
     }
     header {
-      background: var(--bg);
-      border-bottom: 1px solid #e5e7eb;
+      background: linear-gradient(90deg, rgba(37,99,235,0.04), rgba(6,182,212,0.02));
+      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 50;
@@ -58,11 +67,13 @@
     h1 {
       font-size: 2rem;
       font-weight: 700;
+      color: var(--text-dark);
     }
     h2 {
       font-size: 1.5rem;
       font-weight: 700;
       margin-top: 2rem;
+      color: var(--text-dark);
     }
     h3 {
       font-size: 1.25rem;
@@ -70,11 +81,12 @@
       margin-top: 1.5rem;
     }
     .card {
-      background: #f9fafb;
+      background: var(--card-bg);
       padding: 1.5rem;
       border-radius: 0.75rem;
       margin-bottom: 2rem;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 1px 2px rgba(11,18,32,0.04);
+      border: 1px solid var(--border);
     }
     .cta {
       display: inline-block;
@@ -88,19 +100,22 @@
     .cta:hover {
       background: var(--accent-dark);
     }
+    a {
+      color: var(--accent);
+    }
     footer {
       text-align: center;
       padding: 2rem 1rem;
-      border-top: 1px solid #e5e7eb;
+      border-top: 1px solid var(--border);
       color: var(--text-body);
     }
     .placeholder {
-      background: #e2e8f0;
-      border: 2px dashed #94a3b8;
+      background: #eaf6fb;
+      border: 2px dashed rgba(6,182,212,0.15);
       border-radius: 0.5rem;
       padding: 2rem;
       text-align: center;
-      color: #475569;
+      color: var(--muted);
       font-size: 0.9rem;
     }
     .img-row {
@@ -110,14 +125,28 @@
     }
     .img-thumb {
       flex: 1;
-      background: #e2e8f0;
+      background: #e9f7f9;
       border-radius: 0.5rem;
       aspect-ratio: 16/9;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #475569;
+      color: var(--muted);
       font-size: 0.85rem;
+      overflow: hidden;
+    }
+    .img-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* small responsive tweaks */
+    @media (max-width: 760px) {
+      .img-row {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -182,7 +211,7 @@
           <li>Implemented CRM with structured leads and deals pipeline, ensuring lead tracking from capture → qualification → closure.</li>
         </ul>
         <div class="placeholder card">
-          <img src="assets/images/lead-funnel.png" alt="Lead Funnel" style="width: 100%; border-radius: 8px"/>
+          <img src="assets_images/assets/images/lead-funnel.png" alt="Lead Funnel" style="width: 100%; border-radius: 8px"/>
         </div>
 
         <h4>Results</h4>
@@ -204,13 +233,13 @@
         </ul>
         <div class="img-row">
           <div class="img-thumb">
-            <img src="assets/images/meta-ads-results.jpeg" alt="Meta Ads Results" style="width: 100%; height: auto; border-radius: 6px" />
+            <img src="assets_images/assets/images/meta-ads-results.jpeg" alt="Meta Ads Results" />
           </div>
           <div class="img-thumb">
-            <img src="assets/images/google-ads-1.jpg" alt="Google Ads 2024" style="width: 100%; height: auto; border-radius: 6px" />
+            <img src="assets_images/assets/images/google-ads-1.jpg" alt="Google Ads 2024" />
           </div>
           <div class="img-thumb">
-            <img src="assets/images/google-ads-2.jpg" alt="Google Ads 2025" style="width: 100%; height: auto; border-radius: 6px" />
+            <img src="assets_images/assets/images/google-ads-2.jpg" alt="Google Ads 2025" />
           </div>
         </div>
 
@@ -262,7 +291,7 @@
           <li>Proposed visual identity rooted in earthy tones, elegant minimalism, and craft-focused imagery.</li>
           <li>Structured content flow to reflect the brand’s Vision & Mission.</li>
         </ul>
-        <img src="assets/images/sutrakari.jpeg" alt="Sutrakari Hero" style="width: 100%; border-radius: 8px" />
+        <img src="assets_images/assets/images/sutrakari.jpeg" alt="Sutrakari Hero" style="width: 100%; border-radius: 8px" />
         <div style="margin-top: 12px" class="img-row">
           <div class="img-thumb">
             <div class="placeholder">Moodboard 1</div>
