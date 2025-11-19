@@ -92,7 +92,7 @@
     .img-row{ display:flex; gap:1rem; margin-top:1rem; }
     .img-thumb{ flex:1; background:#e9f7f9; border-radius:.5rem; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; overflow:hidden; flex-direction:column; }
     .img-thumb img{ width:100%; height:100%; object-fit:cover; display:block; border-radius:6px; cursor:zoom-in; }
-    .img-label{ margin-top:6px; font-weight:500; font-size:0.9rem; color:var(--text-dark); text-align:center; } /* reduced weight */
+    .img-label{ margin-top:6px; font-weight:500; font-size:0.9rem; color:var(--text-dark); text-align:center; }
 
     /* lightbox */
     #lightboxOverlay{ position:fixed; inset:0; background:rgba(11,18,32,0.75); display:none; align-items:center; justify-content:center; z-index:9999; padding:20px; }
@@ -117,34 +117,32 @@
         gap:12px;
         align-items:center;
         z-index:55;
-        justify-self:stretch;
       }
       .nav-links.open{ display:flex; }
-      /* ensure single-line header: grid already handles alignment; keep brand centered */
       header nav{ grid-template-columns:48px 1fr 48px; padding:12px 1rem; }
       .img-row{ flex-direction:column; }
     }
 
     .floating-whatsapp {
     position: fixed;
-    bottom: 20px;  /* distance from bottom */
-    right: 20px;   /* distance from right */
+    bottom: 20px;
+    right: 20px;
     z-index: 1000;
   }
 
   .floating-whatsapp img {
   width: 60px;
   height: 60px;
-  border-radius: 50%;   /* makes it circular */
-  object-fit: cover;    /* trims extra space */
-  background: #25D366;  /* WhatsApp green background */
-  padding: 8px;         /* adjust spacing inside circle */
+  border-radius: 50%;
+  object-fit: cover;
+  background: #25D366;
+  padding: 8px;
 }
     
   .floating-whatsapp img:hover {
     transform: scale(1.1);
     transition: 0.2s;
-
+  }
   </style>
 </head>
 <body>
@@ -162,7 +160,7 @@
 
       <div id="primaryNav" class="nav-links" role="navigation">
         <a href="#intro">Intro</a>
-        <a href="#kisan">Kisan Sewa Kendra</a>
+        <a href="#kisan">EBS Krishi Bhandar</a>
         <a href="#sutrakari">Sutrakari</a>
         <a href="#contact">Contact</a>
       </div>
@@ -193,7 +191,7 @@
         <h3>Role</h3>
         <p>Performance Marketing Executive</p>
         <h3>Website Built</h3>
-        <p><a href="https://kisansewakendra.in/" target="_blank">Kisan Sewa Kendra</a></p>
+        <p><a href="https://ebskrishibhandar.com/" target="_blank">EBS Krishi Bhandar</a></p>
 
         <h3>Objective</h3>
         <p>
@@ -202,7 +200,7 @@
 
         <h3>Part 0: Shopify Store Development</h3>
         <ul>
-          <li>Built the Kisan Sewa Kendra Shopify store from scratch for Essential Biosciences.</li>
+          <li>Built the EBS Krishi Bhandar Shopify store from scratch for Essential Biosciences.</li>
           <li>Designed product catalogue structure for fertilisers, pesticides, herbicides, fungicides, and plant growth regulators.</li>
           <li>Integrated payment gateways, shipping, discount systems, and analytics tracking.</li>
           <li>Ensured mobile-first UI/UX, catering to farmers browsing primarily on smartphones.</li>
@@ -334,7 +332,6 @@
     <p>© 2025 Yashraj Singh Bhadauria. All rights reserved.</p>
   </footer>
 
-  <!-- Floating WhatsApp CTA (icon only) -->
 <div class="floating-whatsapp" id="floatingWhatsapp">
   <a class="wa-button" href="https://wa.me/917587431192" target="_blank" rel="noopener" aria-label="Message on WhatsApp">
     <img src="assets_images/assets/images/whatsapp.png" alt="WhatsApp" data-no-lightbox />
@@ -376,7 +373,6 @@
         }
       });
 
-      /* Lightbox */
       const overlay = document.getElementById('lightboxOverlay');
       const imgEl = document.getElementById('lightboxImage');
       const closeBtn = document.getElementById('lightboxClose');
